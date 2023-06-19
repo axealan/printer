@@ -37,7 +37,7 @@ $headers = [
     'Content-Type' => 'application/json'
 ];
 $body = '{
-  "urlPDF": "https://b2eb2e9c6218b8ec531cb2d04a0b8651.cdn.bubble.io/f1687134448716x578629438460382100/islide.pdf",
+  "urlPDF": "endereço pdf",
   "caminhoLocalPDF": "./local/do/arquivo.pdf",
   "opcoes": {
     "printer": "EPSON L3110 Series",
