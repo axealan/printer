@@ -12,7 +12,7 @@
 
       Execute o seguinte comando para instalar o Node.js:
    
-         npm initi -y && npm install express npm install axios npm install pdf-to-printer
+         npm init -y && npm install express npm install axios npm install pdf-to-printer
           
    
    ## Rodando o projeto
