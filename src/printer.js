@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', async (req, res) => {
+app.post('/', async (req, res) => {
   const { urlPDF, caminhoLocalPDF, opcoes } = req.body;
 
   if (!urlPDF || !caminhoLocalPDF || !opcoes) {
