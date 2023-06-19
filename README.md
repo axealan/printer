@@ -12,9 +12,8 @@
 
       Execute o seguinte comando para instalar o Node.js:
    
-          curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && sudo bash nodesource_setup.sh && sudo apt -y install nodejs
-   
-          npm install express
+         npm initi -y && npm install express npm install axios npm install pdf-to-printer
+          
    
    ## Rodando o projeto
    
