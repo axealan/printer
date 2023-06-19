@@ -17,9 +17,9 @@
    
    ## Rodando o projeto
    
-            src/listar_pinter.js
+            src/listar_printer.js
    
-            src/pinter.js
+            src/printer.js
   
    ## Endereço API
    
