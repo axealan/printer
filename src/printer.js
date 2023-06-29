@@ -1,12 +1,13 @@
+const net = require('net');
 const http = require('http');
 
 const textoParaImprimir = 'Olá, esta é uma impressão de teste';
 
 const options = {
-  hostname: 'listar-impressoras.onrender.com',  // Apenas o nome do host, sem "https://"
-  port: 8080,  // Modifique a porta conforme necessário
-  path: '/',
+  port: 8080,  // Altere para a porta correta do servidor Python
+  hostname: '192.168.1.105',  // Altere para o endereço IP correto do servidor Python
   method: 'POST',
+  path: '/',
   headers: {
     'Content-Type': 'text/plain',
     'Content-Length': Buffer.byteLength(textoParaImprimir)
