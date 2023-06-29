@@ -3,7 +3,7 @@ const http = require('http');
 const textoParaImprimir = 'Olá, esta é uma impressão de teste';
 
 const options = {
-  hostname: 'https://listar-impressoras.onrender.com',  // Altere para o URL do seu site no Render.com
+  hostname: 'listar-impressoras.onrender.com',  // Apenas o nome do host, sem "https://"
   port: 8080,  // Modifique a porta conforme necessário
   path: '/',
   method: 'POST',
