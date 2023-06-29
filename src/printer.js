@@ -17,17 +17,19 @@ async function baixarPDFDaURL(url, caminhoDestino, opcoes) {
 
 // Função para imprimir o arquivo PDF com opções
 function imprimirPDF(caminhoArquivo, opcoes) {
-  const printerName = printer.getDefaultPrinterName();
+  const impressoras = printer.getPrinters();
+  const printerName = impressoras[0].name; // Seleciona a primeira impressora da lista como padrão
+
   const jobFromPath = printer.printFile({ filename: caminhoArquivo, printer: printerName, options: opcoes });
-  
+
   jobFromPath.once("sent", () => {
     console.log("Trabalho de impressão enviado para a impressora.");
   });
-  
+
   jobFromPath.once("completed", () => {
     console.log("Trabalho de impressão concluído com sucesso.");
   });
-  
+
   jobFromPath.once("error", (err) => {
     console.error("Erro ao imprimir o arquivo:", err);
   });
