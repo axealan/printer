@@ -1,12 +1,12 @@
-const printer = require('printer');
+const printer = require('node-printer');
 
 // Lista as impressoras disponíveis
 function listarImpressoras() {
-  const impressoras = printer.getPrinters();
+  const impressoras = printer.list();
 
   console.log('Impressoras disponíveis:');
   impressoras.forEach(impressora => {
-    console.log(`- ${impressora.name}`);
+    console.log(`- ${impressora}`);
   });
 }
 
