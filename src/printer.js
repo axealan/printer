@@ -1,35 +1,49 @@
-const net = require('net');
 const http = require('http');
+const dns = require('dns');
+const os = require('os');
 
 const textoParaImprimir = 'Olá, esta é uma impressão de teste';
 
-const options = {
-  port: 8080,  // Altere para a porta correta do servidor Python
-  hostname: '192.168.1.105',  // Altere para o endereço IP correto do servidor Python
-  method: 'POST',
-  path: '/',
-  headers: {
-    'Content-Type': 'text/plain',
-    'Content-Length': Buffer.byteLength(textoParaImprimir)
+dns.lookup(os.hostname(), (err, address) => {
+  if (err) {
+    console.error('Erro ao obter o endereço IP:', err);
+    return;
   }
-};
 
-const req = http.request(options, (res) => {
-  console.log('Código de status da resposta:', res.statusCode);
+  const ip = address;
+  const porta = 8080;
 
-  let responseData = '';
-  res.on('data', (chunk) => {
-    responseData += chunk;
+  console.log('Endereço IP:', ip);
+  console.log('Porta:', porta);
+
+  const options = {
+    hostname: ip,
+    port: porta,
+    path: '/',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain',
+      'Content-Length': Buffer.byteLength(textoParaImprimir)
+    }
+  };
+
+  const req = http.request(options, (res) => {
+    console.log('Código de status da resposta:', res.statusCode);
+
+    let responseData = '';
+    res.on('data', (chunk) => {
+      responseData += chunk;
+    });
+
+    res.on('end', () => {
+      console.log('Resposta do servidor Python:', responseData);
+    });
   });
 
-  res.on('end', () => {
-    console.log('Resposta do servidor Python:', responseData);
+  req.on('error', (error) => {
+    console.error('Erro na solicitação:', error);
   });
-});
 
-req.on('error', (error) => {
-  console.error('Erro na solicitação:', error);
+  req.write(textoParaImprimir);
+  req.end();
 });
-
-req.write(textoParaImprimir);
-req.end();
